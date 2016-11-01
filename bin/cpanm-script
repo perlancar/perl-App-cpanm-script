@@ -20,3 +20,22 @@ for (@ARGV) {
 
 print join(" ", "cpanm", @ARGV), "\n" if $ENV{DEBUG};
 system {"cpanm"} "cpanm", @ARGV;
+
+# ABSTRACT: Install modules from CPAN (via script name)
+# PODNAME:
+
+=head1 DESCRIPTION
+
+L<cpanm-script> is a simplistic wrapper over L<cpanm>. This command:
+
+ % cpanm-script -n csvutil
+
+will cause B<cpanm-script> to search for the release tarball that contains the
+script (currently via scraping C<https://metacpan.org/pod/SCRIPTNAME>) and will
+then run:
+
+ % cpanm -n PERLANCAR/App-CSVUtils-0.002.tar.gz
+
+That's about it.
+
+=cut
