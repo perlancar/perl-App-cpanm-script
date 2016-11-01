@@ -1,0 +1,22 @@
+#!perl
+
+# DATE
+# VERSION
+
+use strict;
+use warnings;
+
+use HTTP::Tiny;
+
+for (@ARGV) {
+    next unless /\A[A-Za-z0-9_][A-Za-z0-9_-]*\z/;
+    my $resp = HTTP::Tiny->new->get("https://metacpan.org/pod/$_");
+    unless ($resp->{success} and $resp->{content} =~ m!<a itemprop="downloadUrl" href="[^"]+/([^/]+/[^"]+)">!) {
+        warn "Can't get distribution path for script '$_': $resp->{status} - $resp->{reason}\n";
+        next;
+    }
+    $_ = $1;
+}
+
+print join(" ", "cpanm", @ARGV), "\n" if $ENV{DEBUG};
+system {"cpanm"} "cpanm", @ARGV;
