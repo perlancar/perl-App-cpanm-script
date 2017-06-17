@@ -3,6 +3,8 @@
 # DATE
 # VERSION
 
+# FRAGMENT id=shcompgen-hint command=_cpanm-script
+
 use strict;
 use warnings;
 

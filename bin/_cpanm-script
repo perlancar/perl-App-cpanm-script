@@ -1,0 +1,10 @@
+#!perl
+
+# DATE
+# VERSION
+
+$ENV{SCRIPT_MODE} = 1;
+exec "_cpanm", @ARGV;
+
+# ABSTRACT: Shell completer for cpanm-script
+# PODNAME:
