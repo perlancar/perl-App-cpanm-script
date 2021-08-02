@@ -2,3 +2,4 @@ App-cpanm-script-*
 .build
 *~
 nytprof*
+.DS_Store
